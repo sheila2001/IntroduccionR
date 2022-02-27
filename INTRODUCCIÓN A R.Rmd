@@ -1,0 +1,58 @@
+---
+title: "INTRODUCCIÓN A R"
+author: "Sheila Vinueza"
+date: '2022-02-26'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#Crear un identificador de nombre "ciudad" y asigne \# como valor el nombre de alguna ciudad
+
+```{r parte 1}
+ciudad  <- "El Chaco"
+print(ciudad)
+```
+
+# Crear un identificador de nombre "pais_andes" y asigne como valor
+
+# los nombres de los países por donde cruza la cordillera de Los Andes
+
+```{r parte 2}
+pais_andes <- c("Ecuador", "Chile", "Peru", "Venezuela", "Colombia", "Bolivia", "Argentina")
+print(pais_andes)
+```
+
+# Crear un dataframe con 12 eventos (files) y 5 variables (columnas),
+
+# cada columna debe tener diferentes tipos de datos (entero, decimal,
+
+# caracter, logico)
+
+```{r parte 3}
+mortalidad_Ecuador <- data.frame(identificador= seq(1:12),
+                   sierra_costa_amazonia =as.factor(c(rep(0,7),1,1,2,2,2)),
+paises= c("Pichincha", "Azuay", "Imbabura", "Loja", "Carchi", "Chimborazo", 
+          "Tungurahua", "Guayas", "El Oro","Orellana","Napo", "Sucumbios"),
+mortalidad_2019 =c(3.77, 4.2, 4.61, 4.62, 4.47, 4.8, 4.84, 4.65, 4.39, 2.9, 3.22, 2.99),
+mortalidad_2020 =c(6.07, 5.82, 5.63, 5.55, 5.19,6.46, 6.98, 8.75, 6.94, 3.5, 4.09, 4.01))
+print(mortalidad_Ecuador)
+```
+
+# Cargue el dataset "DNase" e identifique su estructura. Extraiga (subset)
+
+# los datos que cumplan con las condiciones de:
+
+# 1. "conc" (concentracion) entre 0.1 y 0.2
+
+# 2. "Run" diferente a 2, "conc" mayor a 0.2 y "density" menor o igual a 1.0
+
+```{r parte 4}
+database <- data(DNase)
+first_filter <- subset(DNase, conc < 0.2 & conc > 0.1)
+second_filter <- subset(DNase, Run != 2 & conc > 0.2 & density <= 1)
+print(first_filter)
+print(second_filter)
+```
